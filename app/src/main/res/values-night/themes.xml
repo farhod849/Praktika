@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Praktos" parent="Theme.Material3.DayNight.NoActionBar">
-
+    <style name="Base.Theme.Praktos" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="txtColor"> @color/white</item>
+        <item name="bgcolor"> @color/black</item>
     </style>
 </resources>

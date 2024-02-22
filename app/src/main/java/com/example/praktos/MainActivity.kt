@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.praktos.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    var present_value_int = 980
+    var present_value_int = 999
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -19,56 +19,30 @@ class MainActivity : AppCompatActivity() {
             with(binding){
                 textView3.text = post.author
                 textViewmain.text = post.content
-                imageButton2.setImageResource(
-                    if(post.likedByMe) R.drawable.liked else R.drawable.likes
-                )
+                imageButton2.setBackgroundResource(if(post.likedByMe) R.drawable.like_press else R.drawable.like_unpress)
+                textViewAmountLike.text = toStringFromNumb(post.amountLike)
+                textView6.text = toStringFromNumb(post.amountShare)
             }
         }
         binding.imageButton2.setOnClickListener {
             viewModel.like()
         }
-
-        setContentView(R.layout.activity_main)
-        var imgbtn = findViewById<ImageButton>(R.id.imageButton2)
-        var text2 = findViewById<TextView>(R.id.textView5)
-        var count = true;
-
-
-        imgbtn.setOnClickListener{
-
-                    if (count)
-                    {
-                        text2.setText("1")
-                        imgbtn.setBackgroundResource(R.drawable.liked)
-                    }
-                    else
-                    {
-
-                        text2.setText("0")
-                        imgbtn.setBackgroundResource(R.drawable.likes)
-                    }
-                    count = count.not()
-                }
-
-
-
-
-
-        var text1 = findViewById<TextView>(R.id.textView6)
-        var imgbtn1 = findViewById<ImageButton>(R.id.imageButton3)
-        imgbtn1.setOnClickListener {
-            present_value_int+=1;
-            text1.setText(likescount(present_value_int));
+        binding.imageButton3.setOnClickListener {
+            viewModel.share()
         }
+
     }
-    fun likescount(count:Int):String
+    fun toStringFromNumb(count:Int):String
     {
-        return when(count)
-        {
-            in 0..999 -> count.toString()
-            in 1000..<10000000 -> ((count/100).toFloat()/10).toString() + "К"
-            in 1000000..1000000000 -> ((count/100000).toFloat()/10).toString() + "М"
-            else -> "Более млрд"
+        return when(count){
+            in 0..<1_000 -> count.toString()
+            in 1000..<1_100-> "1K"
+            in 1_100..<10_000 -> ((count/100).toFloat()/10).toString() + "K"
+            in 10_000..<1_000_000 -> (count/1_000).toString() + "K"
+            in 1_000_000..<1_100_000 -> "1M"
+            in 1_100_000..<10_000_000 -> ((count/100_000).toFloat()/10).toString() + "M"
+            in 10_000_000..<1_000_000_000 -> (count/1_000_000).toString() + "M"
+            else ->  "более млрд"
         }
     }
 
