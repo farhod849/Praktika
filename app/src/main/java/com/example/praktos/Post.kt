@@ -7,5 +7,4 @@ data class Post(
     var amountLike: Int,
     val likedByMe: Boolean,
     var amountShare: Int,
-
 )
