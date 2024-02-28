@@ -13,6 +13,7 @@ class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.
         set(value) {
             field = value
             notifyDataSetChanged()
+            
         }
     class PostViewHolder(
         private val binding: PostcardBinding
