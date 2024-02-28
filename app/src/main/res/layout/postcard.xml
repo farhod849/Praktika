@@ -16,9 +16,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+<<<<<<< Updated upstream
             android:backgroundTint="@color/gray"
 
             >
+=======
+            android:backgroundTint="@color/gray">
+>>>>>>> Stashed changes
 
 
             <ImageView
@@ -27,15 +31,20 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:scaleType="fitCenter"
+<<<<<<< Updated upstream
                 android:background="@drawable/discord"
 
                 />
+=======
+                android:background="@drawable/discord" />
+>>>>>>> Stashed changes
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 android:text="Discord. Бесплатный онлайн мессенджер для геймеров
               23 ноября в 21:23"
@@ -46,17 +55,26 @@
                 android:text="Дискорд"
                 android:textColor="?txtColor"
                 android:textSize="13sp" />
+=======
+                android:text="Дискорд"
+                android:textColor="?txtColor"
+                android:textSize="13sp"/>
+>>>>>>> Stashed changes
 
             <ImageButton
                 android:id="@+id/morebtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/more_btn"
+<<<<<<< Updated upstream
                 android:layout_gravity="center_vertical"
                  />
 >>>>>>> Stashed changes
 
 
+=======
+                android:layout_gravity="center_vertical"/>
+>>>>>>> Stashed changes
         </LinearLayout>
 
         <TextView
@@ -69,7 +87,11 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+<<<<<<< Updated upstream
             app:layout_constraintTop_toBottomOf="@id/linear1" />
+=======
+            app:layout_constraintTop_toBottomOf="@id/linear1"/>
+>>>>>>> Stashed changes
 
         <ImageView
             android:id="@+id/imageView2"
@@ -80,8 +102,12 @@
             app:layout_constraintTop_toBottomOf="@id/textViewmain"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+<<<<<<< Updated upstream
             android:scaleType = "fitXY"
             />
+=======
+            android:scaleType = "fitXY" />
+>>>>>>> Stashed changes
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linear2"
@@ -89,8 +115,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintRight_toRightOf="parent"
+<<<<<<< Updated upstream
             app:layout_constraintTop_toBottomOf="@id/imageView2"
             >
+=======
+            app:layout_constraintTop_toBottomOf="@id/imageView2">
+>>>>>>> Stashed changes
 
             <ImageButton
                 android:id="@+id/imageButton2"
@@ -101,7 +131,11 @@
                 android:contentDescription="Likes"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+<<<<<<< Updated upstream
                 app:layout_constraintTop_toTopOf="parent" />
+=======
+                app:layout_constraintTop_toTopOf="parent"/>
+>>>>>>> Stashed changes
 
             <TextView
                 android:id="@+id/textViewAmountLike"
@@ -112,7 +146,11 @@
                 android:textColor="?txtColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageButton2"
+<<<<<<< Updated upstream
                 app:layout_constraintTop_toTopOf="parent" />
+=======
+                app:layout_constraintTop_toTopOf="parent"/>
+>>>>>>> Stashed changes
 
             <ImageButton
                 android:id="@+id/imageButton3"
@@ -123,8 +161,12 @@
                 android:background="@drawable/share"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textViewAmountLike"
+<<<<<<< Updated upstream
                 app:layout_constraintTop_toTopOf="parent"
                 />
+=======
+                app:layout_constraintTop_toTopOf="parent"/>
+>>>>>>> Stashed changes
 
             <TextView
                 android:id="@+id/textView6"
@@ -135,18 +177,31 @@
                 android:text="999"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageButton3"
+<<<<<<< Updated upstream
                 app:layout_constraintTop_toTopOf="parent" />
+=======
+                app:layout_constraintTop_toTopOf="parent"/>
+>>>>>>> Stashed changes
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="220dp"
+<<<<<<< Updated upstream
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/textView7"
                 app:srcCompat="@android:drawable/ic_menu_view" /><TextView
+=======
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView7"
+                app:srcCompat="@android:drawable/ic_menu_view"/>
+
+            <TextView
+>>>>>>> Stashed changes
             android:id="@+id/textView7"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
@@ -155,6 +210,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< Updated upstream
             android:layout_marginTop="7dp"
             />
 
@@ -165,4 +221,8 @@
 >>>>>>> Stashed changes
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+=======
+            android:layout_marginTop="7dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> Stashed changes
     </androidx.constraintlayout.widget.ConstraintLayout>

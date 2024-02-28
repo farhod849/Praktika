@@ -8,6 +8,10 @@ data class Post(
     val likedByMe: Boolean,
     var amountShare: Int,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    var viewAmount: Int
+>>>>>>> Stashed changes
 =======
     var viewAmount: Int
 >>>>>>> Stashed changes
