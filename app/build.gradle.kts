@@ -39,6 +39,7 @@ android {
 
 
 dependencies {
+    implementation("com.google.android.material:material:*")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")

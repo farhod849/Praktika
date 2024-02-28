@@ -1,59 +1,22 @@
 package com.example.praktos
 import android.content.Context
 import android.os.Bundle
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.PopupMenu
 import android.widget.Toast
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.praktos.databinding.ActivityMainBinding
 import com.example.praktos.databinding.PostcardBinding
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 class MainActivity : AppCompatActivity(),PostAdapter.Listener {
     private val viewModel: PostViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-        val adapter = PostAdapter(this)
-        binding.container.adapter = adapter
-        viewModel.data.observe(this){posts ->
-            adapter.list = posts
-        }
-
-
-    }
-    override fun onClickLike(post: Post) {
-        viewModel.likeById(post.id)
-    }
-    override fun onClickShare(post: Post) {
-        viewModel.shareById(post.id)
-    }
-}
-=======
-=======
->>>>>>> Stashed changes
         val adapter = PostAdapter(this)
         binding.container.adapter = adapter
         viewModel.data.observe(this) { posts ->
@@ -65,6 +28,8 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
         }
         binding.sendMessage.setOnClickListener{
             with(binding.messageText){
+
+                
                 if(text.isNullOrBlank()){
                     Toast.makeText(
                         this@MainActivity,
@@ -114,7 +79,3 @@ object AndroidUtils{
     }
 }
 }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

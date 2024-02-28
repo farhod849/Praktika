@@ -10,50 +10,20 @@ interface PostRepository {
     fun getAll(): LiveData<List<Post>>
     fun likeById(id: Long)
     fun shareById(id: Long)
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-
-}
-class PostRepositoryInMemoryImpl : PostRepository{
-
-    private var posts = listOf(
-        Post(
-            id = 2,
-            author = "Discord, бесплатный чат для геймеров!",
-=======
     fun removeById(id: Long)
     fun save(post: Post)
     fun editContent(content: String)
 }
 class PostRepositoryInMemoryImpl : PostRepository{
-=======
-    fun removeById(id: Long)
-    fun save(post: Post)
-    fun editContent(content: String)
-}
-class PostRepositoryInMemoryImpl : PostRepository{
->>>>>>> Stashed changes
     private var posts = listOf(
         Post(
             id = 2,
             author = "Discord, бесплатеный чат для геймеров!",
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             content = "Discord — это бесплатный мессенджер, который позволяет вам обмениваться голосовым, видео и текстовым чатом с друзьями, игровыми сообществами и разработчиками. У него сотни миллионов пользователей, что делает его одним из самых популярных способов общения с людьми в Интернете. Discord можно использовать практически на всех популярных платформах и устройствах, включая Windows, macOS, Linux, iOS, iPadOS, Android, а также в веб-браузерах.",
             likedByMe = false,
             amountShare = 999,
             amountLike =  999,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
             viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
-=======
-            viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
         ),
         Post(
             id = 1,
@@ -62,14 +32,7 @@ class PostRepositoryInMemoryImpl : PostRepository{
             amountShare = 999,
             likedByMe = false,
             amountLike =  999,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
             viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
-=======
-            viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
             ),Post(
             id = 3,
             author = "Discord, бесплатный чат для геймеров!",
@@ -77,14 +40,7 @@ class PostRepositoryInMemoryImpl : PostRepository{
             likedByMe = false,
             amountShare = 999,
             amountLike =  999,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
             viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
-=======
-            viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
         ),
         Post(
             id = 4,
@@ -93,14 +49,7 @@ class PostRepositoryInMemoryImpl : PostRepository{
             amountShare = 999,
             likedByMe = false,
             amountLike =  999,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
             viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
-=======
-            viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
         ),Post(
             id = 5,
             author = "Discord, бесплатный чат для геймеров!",
@@ -108,14 +57,7 @@ class PostRepositoryInMemoryImpl : PostRepository{
             likedByMe = false,
             amountShare = 999,
             amountLike =  999,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
             viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
-=======
-            viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
         ),
         Post(
             id = 6,
@@ -124,14 +66,7 @@ class PostRepositoryInMemoryImpl : PostRepository{
             amountShare = 999,
             likedByMe = false,
             amountLike =  999,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
             viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
-=======
-            viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
         ),Post(
             id = 7,
             author = "Discord, бесплатный чат для геймеров!",
@@ -139,14 +74,7 @@ class PostRepositoryInMemoryImpl : PostRepository{
             likedByMe = false,
             amountShare = 999,
             amountLike =  999,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
             viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
-=======
-            viewAmount = Random.nextInt(1,200000)
->>>>>>> Stashed changes
         ),
         Post(
             id = 8,
@@ -155,22 +83,9 @@ class PostRepositoryInMemoryImpl : PostRepository{
             amountShare = 999,
             likedByMe = false,
             amountLike =  999,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        ),
-    )
-
-
-=======
             viewAmount = Random.nextInt(1,200000)
         )
     )
->>>>>>> Stashed changes
-=======
-            viewAmount = Random.nextInt(1,200000)
-        )
-    )
->>>>>>> Stashed changes
     private val data = MutableLiveData(posts)
     override fun getAll(): LiveData<List<Post>> = data
     override fun likeById(id: Long) {
@@ -185,13 +100,6 @@ class PostRepositoryInMemoryImpl : PostRepository{
         }
         data.value = posts
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     override fun shareById(id: Long){
         posts = posts.map{
             if (it.id != id) it else
@@ -199,11 +107,6 @@ class PostRepositoryInMemoryImpl : PostRepository{
 
         }
         data.value = posts
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
     }
     override fun removeById(id: Long) {
         posts = posts.filter { it.id!= id }
@@ -239,10 +142,6 @@ class PostRepositoryInMemoryImpl : PostRepository{
         }
 
         return id.toLong()
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     }
 }
 private val empty = Post (
@@ -257,14 +156,6 @@ private val empty = Post (
 class PostViewModel : ViewModel(){
     private val repository: PostRepository = PostRepositoryInMemoryImpl()
     val data = repository.getAll()
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    fun likeById(id: Long) = repository.likeById(id)
-    fun shareById(id: Long) = repository.shareById(id)
-}
-=======
-=======
->>>>>>> Stashed changes
     val edited = MutableLiveData(empty)
     fun save(){
         edited.value?.let {
@@ -289,7 +180,3 @@ class PostViewModel : ViewModel(){
     fun shareById(id: Long) = repository.shareById(id)
 
 }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
