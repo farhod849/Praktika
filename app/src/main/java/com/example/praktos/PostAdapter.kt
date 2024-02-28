@@ -1,10 +1,22 @@
 package com.example.praktos
 import android.view.LayoutInflater
+<<<<<<< Updated upstream
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.praktos.databinding.PostcardBinding
 
 class PostAdapter(private val listener: Listener):RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+=======
+import android.view.View
+import android.view.ViewGroup
+import android.widget.PopupMenu
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.example.praktos.databinding.PostcardBinding
+typealias OnRemoveListener = (post:Post) -> Unit
+class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
+>>>>>>> Stashed changes
     var list = emptyList<Post>()
         set(value) {
             field = value
@@ -17,10 +29,16 @@ class PostAdapter(private val listener: Listener):RecyclerView.Adapter<PostAdapt
             binding.apply {
                 textView3.text = post.author
                 textViewmain.text = post.content
+<<<<<<< Updated upstream
 
                 textViewAmountLike.text = convertToString(post.amountLike)
                 textView6.text = convertToString(post.amountShare)
 
+=======
+                textViewAmountLike.text = convertToString(post.amountLike)
+                textView6.text = convertToString(post.amountShare)
+                textView7.text = convertToString(post.viewAmount)
+>>>>>>> Stashed changes
                 imageButton2.setBackgroundResource(if (post.likedByMe) R.drawable.like_press else R.drawable.like_unpress)
                 imageButton2.setOnClickListener {
                     listener.onClickLike(post)
@@ -28,6 +46,28 @@ class PostAdapter(private val listener: Listener):RecyclerView.Adapter<PostAdapt
                 imageButton3.setOnClickListener {
                     listener.onClickShare(post)
                 }
+<<<<<<< Updated upstream
+=======
+                morebtn.setOnClickListener {
+                    PopupMenu(it.context, it).apply {
+                        inflate(R.menu.popup_menu_more)
+                        setOnMenuItemClickListener {item ->
+                            when (item.itemId){
+                                R.id.popup_delete -> {
+                                    listener.onRemove(post)
+                                    true
+                                }
+                                R.id.popup_edit -> {
+                                    listener.onEdit(post)
+                                    true
+                                }
+                                else -> false
+                            }
+                        }
+
+                    }.show()
+                }
+>>>>>>> Stashed changes
             }
         }
     }
@@ -39,12 +79,24 @@ class PostAdapter(private val listener: Listener):RecyclerView.Adapter<PostAdapt
         val post = list[position]
         holder.bind(post, listener)
     }
+<<<<<<< Updated upstream
     override fun getItemCount() :Int = list. size
 
     interface Listener{
         fun onClickLike(post: Post)
         fun onClickShare(post: Post)
     }
+=======
+    interface Listener{
+        fun onClickLike(post: Post)
+        fun onClickShare(post: Post)
+        fun onClickMore(post: Post,view: View)
+        fun onEdit(post: Post)
+        fun onLike(post: Post)
+        fun onRemove(post: Post)
+    }
+
+>>>>>>> Stashed changes
 }
 private fun convertToString(count:Int):String{
     return when(count){
@@ -57,4 +109,15 @@ private fun convertToString(count:Int):String{
         in 10_000_000..<1_000_000_000 -> (count/1_000_000).toString() + "M"
         else -> "ꚙ"
     }
+<<<<<<< Updated upstream
+=======
+}
+class PostDiffCallback: DiffUtil.ItemCallback<Post>(){
+    override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+        return oldItem.id == newItem.id
+    }
+    override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+        return oldItem == newItem
+    }
+>>>>>>> Stashed changes
 }

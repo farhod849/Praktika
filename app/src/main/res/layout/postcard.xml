@@ -36,11 +36,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+<<<<<<< Updated upstream
                 android:text="Discord. Бесплатный онлайн мессенджер для геймеров
               23 ноября в 21:23"
                 android:textColor="?txtColor"
                 android:textSize="13sp"
                 />
+=======
+                android:text="Дискорд"
+                android:textColor="?txtColor"
+                android:textSize="13sp" />
+
+            <ImageButton
+                android:id="@+id/morebtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/more_btn"
+                android:layout_gravity="center_vertical"
+                 />
+>>>>>>> Stashed changes
 
 
         </LinearLayout>
@@ -145,7 +159,10 @@
             />
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

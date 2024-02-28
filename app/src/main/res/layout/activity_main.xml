@@ -6,7 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="?bgcolor"
+<<<<<<< Updated upstream
     tools:context=".MainActivity">
+=======
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+
+
+>>>>>>> Stashed changes
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/container"
         android:orientation="vertical"
@@ -14,4 +22,28 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+<<<<<<< Updated upstream
+=======
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="?bgcolor"
+        >
+        <EditText
+            android:id="@+id/message_text"
+            android:hint="Введите сообщение"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            />
+        <ImageButton
+            android:layout_gravity="center"
+            android:id="@+id/send_message"
+            android:background="@drawable/checkmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+>>>>>>> Stashed changes
 </FrameLayout>
