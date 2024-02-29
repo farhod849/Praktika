@@ -3,6 +3,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -38,17 +40,23 @@ class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.
                         setOnMenuItemClickListener {item ->
                             when (item.itemId){
                                 R.id.popup_delete -> {
+                                    Toast.makeText(binding.root.context, "Пост удалён", Toast.LENGTH_SHORT).show()
                                     listener.onRemove(post)
                                     true
                                 }
                                 R.id.popup_edit -> {
+                                    Toast.makeText(binding.root.context, "Редактикрование текста", Toast.LENGTH_SHORT).show()
                                     listener.onEdit(post)
+                                    true
+                                }
+                                R.id.popup_add -> {
+                                    Toast.makeText(binding.root.context, "Добавление текста", Toast.LENGTH_SHORT).show()
+                                    //listener.onEdit(post)
                                     true
                                 }
                                 else -> false
                             }
                         }
-
                     }.show()
                 }
             }

@@ -1,5 +1,7 @@
 package com.example.praktos
 import android.content.Context
+import android.content.Intent
+import android.health.connect.datatypes.units.Length
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -11,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.praktos.databinding.ActivityMainBinding
 import com.example.praktos.databinding.PostcardBinding
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
+import com.google.android.material.snackbar.Snackbar
+
 class MainActivity : AppCompatActivity(),PostAdapter.Listener {
     private val viewModel: PostViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +33,6 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
         }
         binding.sendMessage.setOnClickListener{
             with(binding.messageText){
-
-                
                 if(text.isNullOrBlank()){
                     Toast.makeText(
                         this@MainActivity,
@@ -43,6 +46,22 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
+            }
+        }
+        intent?.let{
+            if(it. action != Intent.ACTION_SEND){
+                return@let
+            }
+
+            val text = it.getStringExtra(Intent.EXTRA_TEXT)
+            if(text.isNullOrBlank()){
+                Snackbar.make(binding.root, "Пост не содержит текста!", LENGTH_INDEFINITE)
+                    .setAction(android.R.string.ok){
+                        finish()
+                    }
+                    .show()
+                return@let
+
             }
         }
     }
@@ -71,7 +90,15 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
     }
     override fun onClickShare(post: Post) {
         viewModel.shareById(post.id)
+        val intent = Intent().apply{
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, post.content)
+        }
+        val shareIntent = Intent.createChooser(intent, "Выберите приложение")
+        startActivity(shareIntent)
     }
+
 object AndroidUtils{
     fun hideKeyboard(view: View){
         val imm = view.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

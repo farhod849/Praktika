@@ -1,5 +1,6 @@
 package com.example.praktos
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -104,7 +105,6 @@ class PostRepositoryInMemoryImpl : PostRepository{
         posts = posts.map{
             if (it.id != id) it else
                 it.copy(amountShare = it.amountShare+1)
-
         }
         data.value = posts
     }
@@ -178,5 +178,4 @@ class PostViewModel : ViewModel(){
     fun likeById(id: Long) = repository.likeById(id)
     fun removeById(id: Long) = repository.removeById(id)
     fun shareById(id: Long) = repository.shareById(id)
-
 }
