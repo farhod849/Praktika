@@ -27,6 +27,7 @@ class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.
                 textViewAmountLike.text = convertToString(post.amountLike)
                 textView6.text = convertToString(post.amountShare)
                 textView7.text = convertToString(post.viewAmount)
+                textViewLink.text = post.link
                 imageButton2.setBackgroundResource(if (post.likedByMe) R.drawable.like_press else R.drawable.like_unpress)
                 imageButton2.setOnClickListener {
                     listener.onClickLike(post)
@@ -51,7 +52,7 @@ class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.
                                 }
                                 R.id.popup_add -> {
                                     Toast.makeText(binding.root.context, "Добавление текста", Toast.LENGTH_SHORT).show()
-                                    //listener.onEdit(post)
+                                    listener.add()
                                     true
                                 }
                                 else -> false
@@ -77,6 +78,7 @@ class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.
         fun onEdit(post: Post)
         fun onLike(post: Post)
         fun onRemove(post: Post)
+        fun add()
     }
 
 }

@@ -24,7 +24,8 @@ class PostRepositoryInMemoryImpl : PostRepository{
             likedByMe = false,
             amountShare = 999,
             amountLike =  999,
-            viewAmount = Random.nextInt(1,200000)
+            viewAmount = Random.nextInt(1,200000),
+            link = "https://www.youtube.com/watch?v=KfBwSlhemb0"
         ),
         Post(
             id = 1,
@@ -33,58 +34,8 @@ class PostRepositoryInMemoryImpl : PostRepository{
             amountShare = 999,
             likedByMe = false,
             amountLike =  999,
-            viewAmount = Random.nextInt(1,200000)
-            ),Post(
-            id = 3,
-            author = "Discord, бесплатный чат для геймеров!",
-            content = "Discord — это бесплатный мессенджер, который позволяет вам обмениваться голосовым, видео и текстовым чатом с друзьями, игровыми сообществами и разработчиками. У него сотни миллионов пользователей, что делает его одним из самых популярных способов общения с людьми в Интернете. Discord можно использовать практически на всех популярных платформах и устройствах, включая Windows, macOS, Linux, iOS, iPadOS, Android, а также в веб-браузерах.",
-            likedByMe = false,
-            amountShare = 999,
-            amountLike =  999,
-            viewAmount = Random.nextInt(1,200000)
-        ),
-        Post(
-            id = 4,
-            author = "ВК - удобный мессенджер для телефонов",
-            content = "«ВКонтакте» — российская социальная сеть со штаб-квартирой в Санкт-Петербурге.",
-            amountShare = 999,
-            likedByMe = false,
-            amountLike =  999,
-            viewAmount = Random.nextInt(1,200000)
-        ),Post(
-            id = 5,
-            author = "Discord, бесплатный чат для геймеров!",
-            content = "Discord — это бесплатный мессенджер, который позволяет вам обмениваться голосовым, видео и текстовым чатом с друзьями, игровыми сообществами и разработчиками. У него сотни миллионов пользователей, что делает его одним из самых популярных способов общения с людьми в Интернете. Discord можно использовать практически на всех популярных платформах и устройствах, включая Windows, macOS, Linux, iOS, iPadOS, Android, а также в веб-браузерах.",
-            likedByMe = false,
-            amountShare = 999,
-            amountLike =  999,
-            viewAmount = Random.nextInt(1,200000)
-        ),
-        Post(
-            id = 6,
-            author = "ВК - удобный мессенджер для телефонов",
-            content = "«ВКонтакте» — российская социальная сеть со штаб-квартирой в Санкт-Петербурге.",
-            amountShare = 999,
-            likedByMe = false,
-            amountLike =  999,
-            viewAmount = Random.nextInt(1,200000)
-        ),Post(
-            id = 7,
-            author = "Discord, бесплатный чат для геймеров!",
-            content = "Discord — это бесплатный мессенджер, который позволяет вам обмениваться голосовым, видео и текстовым чатом с друзьями, игровыми сообществами и разработчиками. У него сотни миллионов пользователей, что делает его одним из самых популярных способов общения с людьми в Интернете. Discord можно использовать практически на всех популярных платформах и устройствах, включая Windows, macOS, Linux, iOS, iPadOS, Android, а также в веб-браузерах.",
-            likedByMe = false,
-            amountShare = 999,
-            amountLike =  999,
-            viewAmount = Random.nextInt(1,200000)
-        ),
-        Post(
-            id = 8,
-            author = "ВК - удобный мессенджер для телефонов",
-            content = "«ВКонтакте» — российская социальная сеть со штаб-квартирой в Санкт-Петербурге.",
-            amountShare = 999,
-            likedByMe = false,
-            amountLike =  999,
-            viewAmount = Random.nextInt(1,200000)
+            viewAmount = Random.nextInt(1,200000),
+            link="https://youtu.be/LfNzk_fwvH4?si=GPiQPpMXszsQYBFi"
         )
     )
     private val data = MutableLiveData(posts)
@@ -151,7 +102,8 @@ private val empty = Post (
     likedByMe = false,
     amountShare = 0,
     amountLike = 0,
-    viewAmount = Random.nextInt(1,200000)
+    viewAmount = Random.nextInt(1,200000),
+    link = ""
 )
 class PostViewModel : ViewModel(){
     private val repository: PostRepository = PostRepositoryInMemoryImpl()
@@ -163,13 +115,13 @@ class PostViewModel : ViewModel(){
         }
         edited.value = empty
     }
-    fun editContent(content: String){
+    fun editContent(content: String, link:String){
         edited.value?.let {
             val text = content.trim()
             if (edited.value?.content == text){
                 return
             }
-            edited.value = edited.value?.copy(content = text)
+            edited.value = edited.value?.copy(content = text,link = link)
         }
     }
     fun edit(post: Post){

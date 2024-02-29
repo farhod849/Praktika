@@ -7,5 +7,6 @@ data class Post(
     var amountLike: Int,
     val likedByMe: Boolean,
     var amountShare: Int,
-    var viewAmount: Int
+    var viewAmount: Int,
+    val link: String,
 )

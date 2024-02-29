@@ -18,10 +18,12 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(),PostAdapter.Listener {
     private val viewModel: PostViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         val adapter = PostAdapter(this)
         binding.container.adapter = adapter
         viewModel.data.observe(this) { posts ->
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
                     ).show()
                     return@setOnClickListener
                 }
-                viewModel.editContent(text.toString())
+                viewModel.editContent(text.toString(), binding.linkText.text.toString())
                 viewModel.save()
                 setText("")
                 clearFocus()
@@ -61,7 +63,6 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
                     }
                     .show()
                 return@let
-
             }
         }
     }
@@ -85,6 +86,11 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
     override fun onRemove(post: Post){
         viewModel.removeById(post.id)
     }
+
+    override fun add() {
+        binding.linkText.visibility = View.VISIBLE
+    }
+
     override fun onClickLike(post: Post) {
         viewModel.likeById(post.id)
     }
