@@ -28,27 +28,6 @@ class PostRepositoryInMemoryImpl(private var context: Context): PostRepository{
     private var nxtId = 1L
     //private var posts = emptyList<Post>()
     private var posts = listOf(
-<<<<<<< HEAD
-        Post(
-            id = 1,
-            author = "Discord, бесплатный чат для геймеров!",
-            content = "Discord — это бесплатный мессенджер, который позволяет вам обмениваться голосовым, видео и текстовым чатом с друзьями, игровыми сообществами и разработчиками. У него сотни миллионов пользователей, что делает его одним из самых популярных способов общения с людьми в Интернете. Discord можно использовать практически на всех популярных платформах и устройствах, включая Windows, macOS, Linux, iOS, iPadOS, Android, а также в веб-браузерах.",
-            likedByMe = false,
-            amountShare = 999,
-            amountLike =  999,
-            viewAmount = Random.nextInt(1,200000),
-            link = "https://www.youtube.com/watch?v=KfBwSlhemb0"
-        ),
-        Post(
-            id = 2,
-            author = "ВК - удобный мессенджер для телефонов",
-            content = "«ВКонтакте» — российская социальная сеть со штаб-квартирой в Санкт-Петербурге.",
-            amountShare = 999,
-            likedByMe = false,
-            amountLike =  999,
-            viewAmount = Random.nextInt(1,200000),
-            link="https://youtu.be/LfNzk_fwvH4?si=GPiQPpMXszsQYBFi"
-=======
          Post(
 
              id = 2,
@@ -90,7 +69,6 @@ class PostRepositoryInMemoryImpl(private var context: Context): PostRepository{
 
          )
 
->>>>>>> ae849e678aa5d671499275a6a11a8db316788e47
         )
     init{
         prefs.getString(key, null)?.let {
@@ -143,8 +121,6 @@ class PostRepositoryInMemoryImpl(private var context: Context): PostRepository{
         data.value = posts
         sync()
     }
-<<<<<<< HEAD
-=======
     private fun sync(){
        with(prefs.edit()){
            putString(key, gson.toJson(posts))
@@ -153,7 +129,6 @@ class PostRepositoryInMemoryImpl(private var context: Context): PostRepository{
     }
 
 
->>>>>>> ae849e678aa5d671499275a6a11a8db316788e47
     override fun editContent(content: String) {
 
     }
@@ -166,6 +141,7 @@ class PostRepositoryInMemoryImpl(private var context: Context): PostRepository{
                 if (it.id.toInt() ==id) id= (it.id+1).toInt()
             }
         }
+
         return id.toLong()
     }
 }

@@ -10,14 +10,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.praktos.databinding.PostcardBinding
 class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
-<<<<<<< HEAD
-    var list = emptyList<Post>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-=======
->>>>>>> ae849e678aa5d671499275a6a11a8db316788e47
     class PostViewHolder(
         private val binding: PostcardBinding
     ):RecyclerView.ViewHolder(binding.root) {
