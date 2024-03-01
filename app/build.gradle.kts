@@ -39,6 +39,7 @@ android {
 
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.8.9")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("com.google.android.material:material:*")
     implementation("androidx.core:core-ktx:1.10.1")

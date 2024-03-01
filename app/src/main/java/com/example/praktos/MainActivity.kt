@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.praktos.databinding.ActivityMainBinding
 import com.example.praktos.databinding.PostcardBinding
+import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import com.google.android.material.snackbar.Snackbar
 
@@ -23,13 +24,28 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        run{
+            val prefer = getPreferences(Context.MODE_PRIVATE)
+            prefer.edit().apply {
+                putString("key", "value")
+                commit()
+            }
+        }
+        run{
+            getPreferences(Context.MODE_PRIVATE)
+                .getString("key", "no value")?.let {
+                    Snackbar.make(binding.root, it, BaseTransientBottomBar.LENGTH_INDEFINITE).show()
+                }
+        }
+
+
+
 
         val adapter = PostAdapter(this)
         binding.container.adapter = adapter
         viewModel.data.observe(this) { posts ->
             adapter.list = posts
         }
-        binding.container.adapter = adapter
         viewModel.data.observe(this) { post ->
             adapter.submitList(post)
         }
@@ -111,4 +127,6 @@ object AndroidUtils{
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
+
+
 }
