@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.flow.combine
 import kotlin.random.Random
 
@@ -23,7 +22,7 @@ interface PostRepository {
 class PostRepositoryInMemoryImpl(private var context: Context): PostRepository{
     private val gson = Gson()
     private val prefs = context.getSharedPreferences("repo", Context.MODE_PRIVATE)
-    private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
+    private val type = com.google.gson.reflect.TypeToken.getParameterized(List::class.java, Post::class.java).type
     private val key = "posts"
     private var nxtId = 1L
     //private var posts = emptyList<Post>()
@@ -181,9 +180,9 @@ class PostViewModel(application: Application) : AndroidViewModel(application){
     fun removeById(id: Long) = repository.removeById(id)
     fun shareById(id: Long) = repository.shareById(id)
 }
-class PostRepostitoryFileImpl(    private val context: Context) : PostRepository {
+class PostRepostitoryFileImpl(private val context: Context) : PostRepository {
     private val gson = Gson()
-    private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
+    private val type = com.google.gson.reflect.TypeToken.getParameterized(List::class.java, Post::class.java).type
     private val filename = "posts.json"
     private var nextId = 1L
     private var posts = emptyList<Post>()
