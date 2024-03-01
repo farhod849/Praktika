@@ -9,14 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.praktos.databinding.PostcardBinding
-typealias OnRemoveListener = (post:Post) -> Unit
 class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
-    var list = emptyList<Post>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-
-        }
     class PostViewHolder(
         private val binding: PostcardBinding
     ):RecyclerView.ViewHolder(binding.root) {
@@ -68,7 +61,7 @@ class PostAdapter(private val listener: Listener):ListAdapter<Post, PostAdapter.
         return PostViewHolder(binding)
     }
     override fun onBindViewHolder(holder: PostViewHolder, position:Int){
-        val post = list[position]
+        val post = getItem(position)
         holder.bind(post, listener)
     }
     interface Listener{
