@@ -23,15 +23,18 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         val adapter = PostAdapter(this)
         binding.container.adapter = adapter
+<<<<<<< HEAD
         viewModel.data.observe(this) { posts ->
             adapter.list = posts
         }
-        binding.container.adapter = adapter
+        viewModel.data.observe(this) {
+            adapter.submitList(it)
+=======
         viewModel.data.observe(this) { post ->
             adapter.submitList(post)
+>>>>>>> ae849e678aa5d671499275a6a11a8db316788e47
         }
         binding.sendMessage.setOnClickListener{
             with(binding.messageText){
@@ -54,7 +57,6 @@ class MainActivity : AppCompatActivity(),PostAdapter.Listener {
             if(it. action != Intent.ACTION_SEND){
                 return@let
             }
-
             val text = it.getStringExtra(Intent.EXTRA_TEXT)
             if(text.isNullOrBlank()){
                 Snackbar.make(binding.root, "Пост не содержит текста!", LENGTH_INDEFINITE)
@@ -111,4 +113,6 @@ object AndroidUtils{
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
+
+
 }
