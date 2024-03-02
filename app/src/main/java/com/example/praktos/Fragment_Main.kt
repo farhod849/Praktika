@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class Fragment_Main : Fragment(),PostAdapter.Listener{
     lateinit var binding: FragmentMainBinding
-    private val viewModel: PostViewModel by viewModels()
+    val viewModel: PostViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +29,7 @@ class Fragment_Main : Fragment(),PostAdapter.Listener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = PostAdapter(this)
+        postsFragment = this
         binding.container.adapter = adapter
         viewModel.data.observe(viewLifecycleOwner) { post ->
             adapter.submitList(post)
@@ -45,6 +46,7 @@ class Fragment_Main : Fragment(),PostAdapter.Listener{
                 }
                 viewModel.editContent(text.toString(), binding.linkText.text.toString())
                 viewModel.save()
+
                 setText("")
                 clearFocus()
                 MainActivity.AndroidUtils.hideKeyboard(this)
@@ -90,6 +92,7 @@ class Fragment_Main : Fragment(),PostAdapter.Listener{
     }
 
     override fun add() {
+
         binding.linkText.visibility = View.VISIBLE
     }
 
