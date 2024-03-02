@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Btn">
+        <item name="android:background">?txtColor</item>
+    </style>
+</resources>

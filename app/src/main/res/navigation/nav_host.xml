@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/posts">
+
+    <fragment
+        android:id="@+id/posts"
+        android:name="com.example.praktos.Fragment_Main"
+        android:label="fragment__main"
+        tools:layout="@layout/fragment__main"
+        android:background="?bgcolor"
+
+        />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.praktos.Fragment_Profile"
+        android:label="fragment__profile"
+        tools:layout="@layout/fragment__profile"
+        android:background="?bgcolor"
+        />
+</navigation>

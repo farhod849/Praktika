@@ -11,93 +11,33 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
 import com.example.praktos.databinding.ActivityMainBinding
 import com.example.praktos.databinding.PostcardBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity(),PostAdapter.Listener {
-    private val viewModel: PostViewModel by viewModels()
+class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController:NavController
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainActivity = this
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val adapter = PostAdapter(this)
-        binding.container.adapter = adapter
-        viewModel.data.observe(this) { post ->
-            adapter.submitList(post)
-        }
-        binding.sendMessage.setOnClickListener{
-            with(binding.messageText){
-                if(text.isNullOrBlank()){
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Поле не может быть пустым",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    return@setOnClickListener
-                }
-                viewModel.editContent(text.toString(), binding.linkText.text.toString())
-                viewModel.save()
-                setText("")
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
-            }
-        }
-        intent?.let{
-            if(it. action != Intent.ACTION_SEND){
-                return@let
-            }
 
-            val text = it.getStringExtra(Intent.EXTRA_TEXT)
-            if(text.isNullOrBlank()){
-                Snackbar.make(binding.root, "Пост не содержит текста!", LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok){
-                        finish()
-                    }
-                    .show()
-                return@let
-            }
-        }
-    }
-    override fun onClickMore(post: Post,view: View) {
-        val popupMenu = PopupMenu(this, view)
-        popupMenu.menuInflater.inflate(R.menu.popup_menu_more, popupMenu.menu)
-        popupMenu.setOnMenuItemClickListener {
-            if (it.itemId == R.id.popup_delete) {
-                viewModel.removeById(post.id)
-            }
-            true
-        }
-        popupMenu.show()
-    }
-    override fun onEdit(post: Post){
-        viewModel.edit(post)
-    }
-    override fun onLike(post: Post){
-        viewModel.likeById(post.id)
-    }
-    override fun onRemove(post: Post){
-        viewModel.removeById(post.id)
-    }
+        navController = Navigation.findNavController(
+            this,
+            R.id.MainFrag
+        )
+        binding.navbtn.setupWithNavController(navController)
 
-    override fun add() {
-        binding.linkText.visibility = View.VISIBLE
-    }
 
-    override fun onClickLike(post: Post) {
-        viewModel.likeById(post.id)
-    }
-    override fun onClickShare(post: Post) {
-        viewModel.shareById(post.id)
-        val intent = Intent().apply{
-            action = Intent.ACTION_SEND
-            type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, post.content)
-        }
-        val shareIntent = Intent.createChooser(intent, "Выберите приложение")
-        startActivity(shareIntent)
     }
 
 object AndroidUtils{
